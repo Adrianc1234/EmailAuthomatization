@@ -17,9 +17,6 @@ app = Flask(__name__)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-# Configuración de Gmail
-GMAIL_USER = 'adrianrobertocarmona49@gmail.com'  # Reemplaza con tu dirección de correo de Gmail
-GMAIL_PASSWORD = 'nyra mlnb xmgt tkbu'  # Reemplaza con tu App Password
 
 # Ruta a la plantilla de fondo y las fuentes
 template_path = 'static/images/plantilla.jpeg'
