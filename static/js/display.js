@@ -1,3 +1,5 @@
+const IP = '104.248.57.81';
+
 document.addEventListener('DOMContentLoaded', () => {
     const csvData = JSON.parse(sessionStorage.getItem('csvData'));
     if (csvData) {
@@ -86,7 +88,7 @@ function sendEmails() {
 
     showEmailLoader(csvDataArray.length);
 
-    fetch('http://localhost:5001/send-email', {
+    fetch(`http://${IP}:5001/send-email`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -117,7 +119,7 @@ function sendEmails() {
 function generatePDF() {
     showPDFLoader(csvDataArray.length);
 
-    fetch('http://localhost:5001/generate-pdf', {
+    fetch(`http://${IP}:5001/generate-pdf`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -204,7 +206,7 @@ function updateEmailLoader(current, total) {
     status.textContent = `${current}/${total}`;
 }
 
-const socket = io.connect('http://localhost:5001');
+const socket = io.connect(`http://${IP}:5001`);
 socket.on('progress', (data) => {
     if (data.task === 'pdf') {
         updatePDFLoader(data.current, data.total);

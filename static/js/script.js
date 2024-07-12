@@ -1,3 +1,5 @@
+const IP = '104.248.57.81';
+
 document.getElementById('dropArea').addEventListener('drop', dropHandler);
 document.getElementById('dropArea').addEventListener('dragover', dragOverHandler);
 document.getElementById('dropArea').addEventListener('dragleave', dragLeaveHandler);
@@ -31,7 +33,7 @@ function processCSV(file) {
         const data = CSVToArray(text);
         const jsonData = csvToJSON(data);
         sessionStorage.setItem('csvData', JSON.stringify(jsonData));
-        window.location.href = 'http://localhost:5001/csv';
+        window.location.href = `http://${IP}:5001/csv`;
     };
     reader.readAsText(file);
 }
